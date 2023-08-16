@@ -1,4 +1,5 @@
-﻿internal class Program {
+﻿// GIVEN NUMBER IS PRIME NUMBER (OR) NOT A PRIME NUMBER
+internal class Program {
    static void Main () {
       Console.WriteLine ("Enter the number to find prime number or not");
       int i = Convert.ToInt32 (Console.ReadLine ());
