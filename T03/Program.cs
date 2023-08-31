@@ -11,12 +11,8 @@ internal class Program {
       }
       Console.WriteLine ($"\nFibonnaci series of {n}th term is");
       foreach (int j in fb) {
-         Console.Write (j);
-         Console.Write (" ");
+         Console.Write ($"{j} ");
       }
-      Console.WriteLine ("\n");
-      Console.WriteLine ($"{n}th term value of fibonnaci series is\t");
-      Console.Write (fb[n]);
-      Console.WriteLine ("\n");
+      Console.WriteLine ($"\n\n{n}th term value of fibonnaci series is {fb[n]}\n");
    }
 }
