@@ -1,18 +1,18 @@
 ﻿//FIBONNACI SERIES
 internal class Program {
    static void Main () {
-      int[] fb = { 0, 1, 1 };
-      int lk;
-      Console.WriteLine ("Enter the nth term of s fibonnaci series, to find the value and along with the series");
-      int n = Convert.ToInt32 (Console.ReadLine ());
-      for (int i = 0; i < n; i++) {
-         lk = fb[^1] + fb[^2];
-         fb = fb.Append (lk).ToArray (); if (i == n - 3) break;
+      var fb_list = new List<int> { 0, 1, 1 };
+      Console.WriteLine ("Enter the nth term of a Fibonnaci series, to find the value and along with the series");
+      int.TryParse (Console.ReadLine (), out int n);
+      if (n == 0) Console.WriteLine ("Invaild Input");
+      else {
+         for (int i = 0; i < n; i++) {
+            int dummy = fb_list[^1] + fb_list[^2];
+            fb_list.Add (dummy);
+         }
+         Console.WriteLine ($"Fibonnaci series is ");
+         foreach (int j in fb_list) Console.Write (j + " "); // (or) foreach (int j in fb_list) Console.Write ($"{j} ");
+         Console.WriteLine ($"\n{n}th term value of fibonnaci series is {fb_list[n]}");
       }
-      Console.WriteLine ($"\nFibonnaci series of {n}th term is");
-      foreach (int j in fb) {
-         Console.Write ($"{j} ");
-      }
-      Console.WriteLine ($"\n\n{n}th term value of fibonnaci series is {fb[n]}\n");
    }
 }
