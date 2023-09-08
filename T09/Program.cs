@@ -20,11 +20,11 @@ internal class Program {
             Console.WriteLine (str);
          }
          Array.Reverse (s);
-         List<int> numberList = s.ToList ();
-         numberList.RemoveAt (0);
-         //foreach (int j in s) Console.Write (j);
+         s = s.Skip (1).ToArray ();
+         //List<int> numberList = s.ToList ();
+         //numberList.RemoveAt (0);
          int len1 = 1;
-         foreach (int j in numberList) {
+         foreach (int j in s) {
             if (j != a) {
                var str1 = new string (c, len1);
                Console.Write (str1); len1++;
@@ -32,6 +32,7 @@ internal class Program {
                Console.WriteLine (str);
             }
          }
+         //foreach (int j in s) Console.Write (j);
       }
    }
 }
