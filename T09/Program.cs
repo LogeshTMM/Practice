@@ -2,7 +2,7 @@
 internal class Program {
    static void Main (string[] args) {
       Console.WriteLine ("Enter the number of rows for a diamond do you want to see");
-      if (int.TryParse (Console.ReadLine (), out int a) && a >= 5) {
+      if (uint.TryParse (Console.ReadLine (), out uint a) && a >= 5) {
          char b = '*'; char c = ' '; int[] s = Array.Empty<int> ();
          for (int j = 1; j <= a; j++) { // separate a hard number from a given input
             if (j % 2 != 0) {
