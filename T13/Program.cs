@@ -2,26 +2,23 @@
 internal class Program {
    static void Main (string[] args) {
       Console.WriteLine ("Enter the Password to check whether it's strong (or) weak");
-      string Pw = Console.ReadLine (); var digit = new List<bool> (); var upper = new List<bool> ();
-      var lower = new List<bool> (); var special = new List<bool> (); int n_len = Pw.Length;
-      foreach (char b in Pw) digit.Add (char.IsDigit (b));
-      foreach (char c in Pw) upper.Add (char.IsUpper (c));
-      foreach (char c in Pw) lower.Add (char.IsLower (c));
-      foreach (char c in Pw) special.Add (char.IsLetterOrDigit (c));
-      bool d = digit.Contains (true);
-      bool u = upper.Contains (true);
-      bool l = lower.Contains (true);
-      bool s = special.Contains (false);
-      bool n = n_len > 6;
-      if (d && u && l && s && n == true) Console.WriteLine ("Strong Password, you have.");
+      string pw = Console.ReadLine ();
+      List<bool> special_char = new ();
+      foreach (char c in pw) special_char.Add (char.IsLetterOrDigit (c));
+      bool d = pw.Any (char.IsDigit);
+      bool u = pw.Any (char.IsUpper);
+      bool l = pw.Any (char.IsLower);
+      bool s = special_char.Contains (false);
+      bool pw_len = pw.Length > 6;
+      if (d && u && l && s && pw_len) Console.WriteLine ("Strong Password, you have.");
       else {
          Console.Write ("\nYou have a weak Password, reason is given below\n");
-         if (n_len < 6) Console.WriteLine ("\t* Length of a password should be more than 6");
-         if (d == false) Console.WriteLine ("\t* It contains at least one digit.");
-         if (u == false) Console.WriteLine ("\t* It contains at least one upper character.");
-         if (l == false) Console.WriteLine ("\t* It contains at least one lower character.");
-         if (s == false) Console.WriteLine ("\t* It contains at least one special character.");
-         Console.WriteLine ("Try again for a strong Password");
+         if (!pw_len) Console.WriteLine ("* Length of a password should be more than 6");
+         if (!d) Console.WriteLine ("* It contains at least one digit.");
+         if (!u) Console.WriteLine ("* It contains at least one upper character.");
+         if (!l) Console.WriteLine ("* It contains at least one lower character.");
+         if (!s) Console.WriteLine ("* It contains at least one special character.");
+         Console.WriteLine ("Try again for a strong password");
       }
    }
 }
