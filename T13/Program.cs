@@ -10,7 +10,7 @@ internal class Program {
          if (char.IsUpper (pw[i])) hasUpper = true;
          if (char.IsLower (pw[i])) hasLower = true;
          if (special.Contains (pw[i])) hasSpecial = true;
-         if (hasDigit && hasUpper && hasSpecial) break;
+         if (hasDigit && hasUpper && hasLower && hasSpecial) break;
       }
       if (hasDigit && hasLower && hasSpecial && pw_len) Console.WriteLine ("Strong Password, you have.");
       else {
