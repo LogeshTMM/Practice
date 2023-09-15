@@ -19,7 +19,8 @@ internal class Program {
          if (!hasDigit) Console.WriteLine ("   " + "* It contains at least one digit.");
          if (!hasUpper) Console.WriteLine ("   " + "* It contains at least one upper character.");
          if (!hasLower) Console.WriteLine ("   " + "* It contains at least one lower character.");
-         if (!hasSpecial) Console.WriteLine ("   " + "* It contains at least one special character.");
+         if (!hasSpecial) Console.WriteLine ("   " + "* It contains at least one special characters"
+                                             + " like (!,@,#,$,%,^,&,*,(,),_,+,/).");
          Console.WriteLine ("Try again for a strong password.");
       }
    }
