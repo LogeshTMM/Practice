@@ -12,7 +12,7 @@ internal class Program {
          if (special.Contains (pw[i])) hasSpecial = true;
          if (hasDigit && hasUpper && hasLower && hasSpecial) break;
       }
-      if (hasDigit && hasLower && hasSpecial && pw_len) Console.WriteLine ("Strong Password, you have.");
+      if (pw_len && hasDigit && hasUpper && hasLower && hasSpecial) Console.WriteLine ("Strong Password, you have.");
       else {
          Console.Write ("You have a weak Password, reason is given below:\r\n");
          if (!pw_len) Console.WriteLine ("   " + "* Length of a password should be more than 6");
