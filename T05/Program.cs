@@ -8,14 +8,15 @@ internal class Program {
             Console.WriteLine ("1 is not a prime number, because a prime number" + " " +
                                "must divisble by itself number and also divisble by 1");
             return;
-         }
-         for (i = 2; i < num; i++) {
-            if (num % i == 0) {
-               Console.WriteLine ($"{num} is not a prime number");
-               break;
+         } else {
+            for (i = 2; i < num; i++) {
+               if (num % i == 0) {
+                  Console.WriteLine ($"{num} is not a prime number");
+                  return;
+               }
             }
+            Console.WriteLine ($"{num} is a prime number");
          }
-         if (num == i) Console.WriteLine ($"{num} is a prime number");
       } else Console.WriteLine ("Invalid input");
    }
 }
