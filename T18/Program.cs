@@ -7,15 +7,16 @@ internal class Program {
          Console.WriteLine ("Invalid input");
          return;
       }
-      int result = 0;
-      foreach (int a in input) ArmStrong (a - 48); /* ASCII CODE FOR 1 is 49, assume that a subtract by 48 (a - 48;) 
-                                                     to get int value 1. According to 'char 1'.*/
-      if (int.Parse (input) == result) Console.WriteLine ("Given number is an Armstrong number");
-      else Console.WriteLine ("Given number is not an Armstrong number");
-
-      int ArmStrong (int b) {
-         result += (int)(Math.Pow (b, input.Length));
-         return result;
+      ArmStrong (input);
+   }
+   static int ArmStrong (string num) {
+      int b, result = 0;
+      foreach (int a in num) {
+         b = a - 48; /* ASCII CODE FOR 1 is 49, assume that a subtract by 48 (a - 48;) to get int value 1. According to 'char 1'.*/
+         result += (int)(Math.Pow (b, num.Length));
       }
+      if (int.Parse (num) == result) Console.WriteLine ("Given number is an Armstrong number");
+      else Console.WriteLine ("Given number is not an Armstrong number");
+      return result;
    }
 }
