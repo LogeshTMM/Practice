@@ -1,7 +1,7 @@
 ﻿// whether is ABECEDARIAN WORD (or) NOT
 internal class Program {
    static void Main (string[] args) {
-      Console.WriteLine ("Enter the word to check ABECEDARIAN WORD or not");
+      Console.WriteLine ("Enter the word to check it's an ABECEDARIAN word or not");
       string input = Console.ReadLine ().ToLower ();
       List<int> intChars = new (); List<bool> boolIntChars = new ();
       if (!input.All (char.IsLetter)) {
