@@ -7,14 +7,14 @@ internal class Program {
          Console.WriteLine ("Invaild input");
          return;
       }
-      List<char> reverseInputArray = new ();
+      char[] reverseInputArray = Array.Empty<char> ();
       Console.Write ("Reverse order of given number is" + " ");
       for (int i = input.Length - 1; i >= 0; i--) {
-         Console.Write (input[i]);
-         reverseInputArray.Add (input[i]);
+         char item = input[i];
+         Console.Write (item);
+         reverseInputArray = reverseInputArray.Append (item).ToArray ();
       }
-      var item = new string (reverseInputArray.ToArray ());
-      if (string.Equals (input, item)) Console.Write ("\nIt's a palindrome");
+      if (string.Equals (input, new string (reverseInputArray))) Console.Write ("\nIt's a palindrome");
       else Console.Write ("\nIt's not a palindrome");
    }
 }
