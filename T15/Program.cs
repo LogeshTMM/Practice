@@ -7,11 +7,11 @@ internal class Program {
          Console.WriteLine ("Invaild input");
          return;
       }
-      int inputLen = input.Length, count = 0;
+      int inputLen = input.Length;
       for (int i = 0; i < inputLen; i++) {
-         for (int j = 1; j < inputLen; j++) {
+         for (int j = 0, count = 0; j < inputLen; j++) {
             if (input[i] == input[j]) count++;
-            if (count == 1) {
+            if (count == 2) {
                Console.WriteLine ("Given word is not an Isogram.");
                return;
             }
