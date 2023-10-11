@@ -7,11 +7,10 @@ internal class Program {
             Console.WriteLine ($"Integral part of a given decimal value is {inputints}" +
                $"\nFactorial part of a given decimal value is none");
             return;
-         } else {
-            string[] inputDecimal = input.ToString ().Split ('.');
-            Console.WriteLine ($"Integral part of a given decimal value is {inputDecimal[0]}" +
-                            $"\nFactorial part of a given decimal value is {inputDecimal[1]}");
          }
+         string[] inputDecimal = input.ToString ().Split ('.');
+         Console.WriteLine ($"Integral part of a given decimal value is {inputDecimal[0]}" +
+                         $"\nFactorial part of a given decimal value is {inputDecimal[1]}");
       } else Console.WriteLine ("Invaild input");
    }
 }
