@@ -1,20 +1,15 @@
-﻿// ---------------------------------------------------------------------------------------
-
-// Training ~ A training program for new joinees at Metamation, Batch- July 2023
+﻿// Training ~ A training program for new joinees at Metamation, Batch- July 2023
 
 // Copyright (c) Metamation India.
 
-// ---------------------------------------------------------------------------
-
 // Program.cs
 
-// <TODO: // To seperate the integral and factorial part from a given decimal number.
+// <TODO: To seperate the integral and factorial part from a given decimal number.
 
 // When an output shows an invalid input, then you enter other than numbers.
 
 // If you enter the decimal number to visualize the integral and factorial part of it.>
 
-// ---------------------------------------------------------------------------------------
 internal class Program {
    static void Main () {
       Console.WriteLine ("Enter the decimal number to display it's integral and factorial part");
