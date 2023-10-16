@@ -1,6 +1,14 @@
-﻿// SWAP INDICES
+﻿// Training ~ A training program for new joinees at Metamation, Batch- July 2023
+
+// Copyright (c) Metamation India.
+
+// Program.cs
+
+// <TODO: Display random series of numbers to the user and ask them to provide two index values which need to be swapped.
+
+// The output displays a swapped random number series to the user.>
+
 internal class Program {
-   List<int> ints;
    static void Main () {
       Console.WriteLine ("Random number series given below");
       Random rnd = new ();
@@ -14,9 +22,10 @@ internal class Program {
       bool firstValue = int.TryParse (Console.ReadLine (), out int num1);
       bool secondValue = int.TryParse (Console.ReadLine (), out int num2);
       if (!firstValue || !secondValue) Console.WriteLine ("Invaild input");
-      else SwapFunc (num1, num2, ints);
+      else SwapFuncAndDisp (num1, num2, ints);
    }
-   static void SwapFunc (int a, int b, List<int> ints) {
+
+   static void SwapFuncAndDisp (int a, int b, List<int> ints) {
       if (!(a <= ints.Count && b <= ints.Count)) Console.WriteLine ("Index out of range");
       else {
          (ints[a], ints[b]) = (ints[b], ints[a]);
