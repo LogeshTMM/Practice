@@ -1,18 +1,12 @@
-﻿// ----------------------------------------------------------------------------------------
-
-// Training ~ A training program for new joinees at Metamation, Batch- July 2023
+﻿// Training ~ A training program for new joinees at Metamation, Batch- July 2023
 
 // Copyright (c) Metamation India.
 
-// ---------------------------------------------------------------------------
-
 // Program.cs
 
-// <TODO: // Show the Pascal triangle values based on the number of rows.
+// <TODO: Show the Pascal triangle values based on the number of rows.
 
 // Each row contains elements to form a triangle shape in the output.>
-
-// ---------------------------------------------------------------------------------------
 
 internal class Program {
    static void Main (string[] args) {
