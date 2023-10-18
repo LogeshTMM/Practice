@@ -1,18 +1,9 @@
-﻿// ---------------------------------------------------------------------------------------
-
-// Training ~ A training program for new joinees at Metamation, Batch- July 2023
-
+﻿// Training ~ A training program for new joinees at Metamation, Batch- July 2023
 // Copyright (c) Metamation India.
-
-// ---------------------------------------------------------------------------
-
 // Program.cs
+// <TODO: Displaying possible combinations of words without repetition through string permutation assignment.
+// Display the possible new words from the given word without repeating the same words.>
 
-// <TODO: // String permutation assignment to display the possible non-repeatation words.
-
-// Display the possible non-repeatation words from a given word>
-
-// ---------------------------------------------------------------------------------------
 internal class Program {
    static void Main (string[] args) {
       Console.WriteLine ("Enter the word to get its permutation");
@@ -24,7 +15,7 @@ internal class Program {
       List<string> strings = new () { input };
       for (int i = 0; i < input.Length; i++) {
          int j = 0, a = 0, b = 1;
-         char[] item = { };
+         char[] item = Array.Empty<char> ();
          while (j < input.Length) {
             if (i == input.Length - 1 && j == input.Length - 2) break;
             if (a < input.Length && b < input.Length) {
