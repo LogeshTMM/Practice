@@ -1,29 +1,16 @@
 ﻿// Training ~ A training program for new joinees at Metamation, Batch- July 2023
-
 // Copyright (c) Metamation India.
-
 // Program.cs
-
 // <TODO: In the string provided, every character is a vote for a contestant to win.
-
 // The output displays the maximum number of votes a character has received and its count.>
-
 /// <summary>Count the number of times each character appears in the string.</summary>
-
 /// <param name="tempInput">It has the string to process.</param>
-
 /// <param name="inputChar">It returns the character who has received the most votes.</param>
-
 /// <param name="count">It returns the maximum number of votes received for a character.</param>
-
 /// <returns> Return values:
-
 /// (null): Checkin operation is 'Not Applicable' to the url. Flux treats it as a normal save.
-
 /// Invalid input: When you enter other than letters or press 'enter' without typing anything in the console.
-
 /// 1: Displays the character and its number of votes.
-
 /// </returns>
 
 internal class Program {
