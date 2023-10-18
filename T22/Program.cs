@@ -1,11 +1,7 @@
 ﻿// Training ~ A training program for new joinees at Metamation, Batch- July 2023
-
 // Copyright (c) Metamation India.
-
 // Program.cs
-
 // <TODO: Display random series of numbers to the user and ask them to provide two index values which need to be swapped.
-
 // The output displays a swapped random number series to the user.>
 
 internal class Program {
