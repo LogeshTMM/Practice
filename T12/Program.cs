@@ -1,16 +1,12 @@
 ﻿// Training ~ A training program for new joinees at Metamation, Batch- July 2023
-
 // Copyright (c) Metamation India.
-
 // Program.cs
-
 // <TODO: Show the Pascal triangle values based on the number of rows.
-
-// Each row contains elements to form a triangle shape in the output.>
+// In the output, each row has elements that create a triangle shape.>
 
 internal class Program {
    static void Main (string[] args) {
-      Console.WriteLine ("Enter nth rows values to display it's pascal triangle values");
+      Console.WriteLine ("To display the pascal triangle values,please enter the row values.");
       if (!int.TryParse (Console.ReadLine (), out int rows)) {
          Console.WriteLine ("Invaild input");
          return;
