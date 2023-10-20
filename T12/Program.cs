@@ -12,8 +12,7 @@ internal class Program {
          return;
       }
       int columns = rows;
-      List<int> noOfElements = new ();
-      for (int i = 1; i <= rows; i++) noOfElements.Add (i);
+      List<int> noOfElements = Enumerable.Range (1, rows).ToList ();
       int[,] ints = new int[rows, columns];
       for (int i = 0; i < rows; i++) {
          for (int j = 0; j < noOfElements[i]; j++) {
@@ -22,9 +21,7 @@ internal class Program {
          }
       }
       for (int i = 0; i < rows; i++) {
-         int space = rows - i;
-         string repeat = new (' ', space);
-         Console.Write (repeat);
+         Console.Write (new string (' ', (rows - i) + 1));
          for (int j = 0; j < noOfElements[i]; j++) Console.Write (ints[i, j] + " ");
          Console.WriteLine ();
       }
