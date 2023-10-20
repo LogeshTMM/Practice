@@ -8,7 +8,6 @@
 /// <param name="inputChar">It returns the character who has received the most votes.</param>
 /// <param name="count">It returns the maximum number of votes received for a character.</param>
 /// <returns> Return values:
-/// (null): Checkin operation is 'Not Applicable' to the url. Flux treats it as a normal save.
 /// Invalid input: When you enter other than letters or press 'enter' without typing anything in the console.
 /// 1: Displays the character and its number of votes.
 /// </returns>
