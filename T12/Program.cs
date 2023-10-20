@@ -21,7 +21,7 @@ internal class Program {
          }
       }
       for (int i = 0; i < rows; i++) {
-         Console.Write (new string (' ', (rows - i) + 1));
+         Console.Write (new string (' ', rows - i));
          for (int j = 0; j < noOfElements[i]; j++) Console.Write (ints[i, j] + " ");
          Console.WriteLine ();
       }
