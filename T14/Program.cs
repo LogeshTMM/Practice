@@ -17,19 +17,16 @@ internal class Program {
          }
          if (ints.Sum () == result.Length) {
             if (result == "") Console.WriteLine ("\"\"");
-            else foreach (char a in result) Console.Write (a);
+            Console.Write (result);
             return;
          }
          int counting = 0;
-         for (int i = 0, j = 1; i < result.Length - 1; i++, j++) {
-            if (result[i] == result[j]) counting++;
-         }
+         for (int i = 0, j = 1; i < result.Length - 1; i++, j++) if (result[i] == result[j]) counting++;
          if (counting >= 1) result = AvoidAdjPairs (result);
          else {
-            foreach (char a in result) Console.Write (a);
+            Console.Write (result);
             return;
          }
-         result = AvoidAdjPairs (result);
       }
    }
 
