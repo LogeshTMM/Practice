@@ -12,19 +12,19 @@ internal class Program {
       Console.Write ("How much money do you have? : ");
       _ = int.TryParse (Console.ReadLine (), out int totalAmount);
       if (totalAmount < 1) {
-         Console.WriteLine ("Invaild input");
+         Console.WriteLine ("Invalid input");
          return;
       }
       Console.Write ("Enter the price of the chocolate: ");
-      _ = int.TryParse (Console.ReadLine (), out int priceOfChoco);
+      int.TryParse (Console.ReadLine (), out int priceOfChoco);
       if (priceOfChoco < 1) {
-         Console.WriteLine ("Invaild input");
+         Console.WriteLine ("Invalid input");
          return;
       }
       Console.Write ("Enter the number of a chocolate wrappers to exchange a single chocolate: ");
       _ = int.TryParse (Console.ReadLine (), out int wrappers);
-      if (wrappers < 1) {
-         Console.WriteLine ("Invaild input");
+      if (wrappers <= 1) {
+         Console.WriteLine ("Invalid input");
          return;
       }
       int C = 0, X = 0; double W = 0;
@@ -36,31 +36,28 @@ internal class Program {
    /// <param name="totalAmount">Given money (or) how much money you have?.</param>
    /// <param name="priceOfChoco">Price of the chocolate.</param>
    /// <param name="wrappers">Maximum numbers of wrappers to exchange the chocolate.</param>
-   /// <param name="c">Total number of chocolate in the end.</param>
-   /// <param name="x">Remaining money after buyed the chocolates.</param>
-   /// <param name="w">Remaining wrappers after exchange the chocolates.</param>
+   /// <param name="maxChocoCount">Total number of chocolates in the end.</param>
+   /// <param name="BalanceMoney">Remaining money after buyed the chocolates.</param>
+   /// <param name="wrappersRemaining">Remaining wrappers after exchange the chocolates.</param>
    /// <returns> Return values:
    /// Displays the remaining amount, maximum number of chocolates, and remaining wrappers..
    /// </returns>
-   static void ChocoGames (int totalAmount, int priceOfChoco, int wrappers, ref int c, ref int x, ref double w) {
-      x = totalAmount % priceOfChoco; c = totalAmount / priceOfChoco; // x denotes remaining money after buyed the chocolates.
-      int chocoWrapper = c / wrappers;// c denotes Total number of chocolates.
-      w = c % wrappers; double y = chocoWrapper + w; // w denotes remaining wrappers after every exchange of the chocolates.
-      while (y >= wrappers) { // y denotes (chocowrappers = sum of exchange the wrappers to chocolate) and w. 
-         c += chocoWrapper;
-         y /= wrappers;
-         if (y / wrappers >= 1) w = y / wrappers;
-         if (y / wrappers >= 1) chocoWrapper = Convert.ToInt32 (y) / wrappers;
-         else {
-            c += Convert.ToInt32 (y);
-            w = y;
+   static void ChocoGames (int totalAmount, int priceOfChoco, int wrappers, ref int maxChocoCount,
+      ref int BalanceMoney, ref double wrappersRemaining) {
+      BalanceMoney = totalAmount % priceOfChoco; maxChocoCount = totalAmount / priceOfChoco;
+      int getChoco = maxChocoCount / wrappers;
+      wrappersRemaining = maxChocoCount % wrappers;
+      double wrappersToExchange = getChoco + wrappersRemaining; // Get the chocolates based on the remaining wrappers.
+      maxChocoCount += getChoco;
+      for (; ; ) {
+         getChoco = Convert.ToInt32 (wrappersToExchange) / wrappers;
+         maxChocoCount += getChoco;
+         wrappersRemaining = wrappersToExchange % wrappers;
+         wrappersToExchange = getChoco + wrappersRemaining;
+         if (wrappersToExchange < wrappers) {
+            wrappersRemaining += getChoco;
             return;
          }
-         y = chocoWrapper + w;
-      }
-      if ((chocoWrapper + w) < wrappers) {
-         c += chocoWrapper;
-         w += chocoWrapper;
       }
    }
 }
