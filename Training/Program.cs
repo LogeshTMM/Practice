@@ -11,10 +11,10 @@ internal class Program {
    static void Main (string[] args) {
       Console.Write ("Enter the number to get the multiplication table upto 10: ");
       _ = int.TryParse (Console.ReadLine (), out int num);
-      if (num < 1) {
-         Console.WriteLine ("Invalid input");
-         return;
+      if (num < 1) Console.WriteLine ("Invalid input");
+      else {
+         for (int i = 1; i < 10; i++) Console.WriteLine ($"  {num}  x  {i}   =   {num * i}");
+         Console.WriteLine ($"  {num}  x  10  =   {num * 10}");
       }
-      for (int i = 1; i < 11; i++) Console.WriteLine ($"{num} * {i} = {num * i}");
    }
 }
