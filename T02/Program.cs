@@ -40,10 +40,8 @@
       string temp = arr[2].ToString () + arr[3].ToString ();
       if (arr[0] != 0) Console.Write (dic[arr[0] * 1000]);
       if (arr[1] != 0) Console.Write (dic[arr[1] * 100]);
-      if (dic.TryGetValue (Convert.ToInt32 (temp), out string value)) {
-         Console.Write (value);
-         return;
-      } else if (arr[2] != 0 && arr[3] >= 1) Console.Write (dic[arr[2] * 10] + dic[arr[3]]);
+      if (dic.TryGetValue (Convert.ToInt32 (temp), out string value)) Console.Write (value);
+      else if (arr[2] != 0 && arr[3] >= 1) Console.Write (dic[arr[2] * 10] + dic[arr[3]]);
       else if (input.Length == 1) Console.WriteLine (dic[arr[3]]);
    }
 }
