@@ -25,7 +25,7 @@ internal class Program {
    /// </returns>
    static (char a, int count) VoteContest (string a) {
       Dictionary<char, int> ints = new ();
-      foreach (char c in a) ints[c] = ints.TryGetValue (c, out _) ? ints[c] = ints[c] + 1 : ints[c] = 1;
+      foreach (char c in a) ints[c] = ints.TryGetValue (c, out int count) ? count + 1 : 1;
       var temp = ints.OrderByDescending (x => x.Value).FirstOrDefault ();
       return (temp.Key, temp.Value);
    }
