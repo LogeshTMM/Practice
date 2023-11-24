@@ -13,13 +13,12 @@ using System.Linq;
 internal class Program {
    static void Main (string[] args) {
       string[] words = File.ReadAllLines ("D:/LogeshKumar.P/words.txt"); // File location should be as per your system and focus on backslash, otherwise an error might be shown.
-      Console.Write ("Enter the seven letters: ");// Note: The first letter in the string must be used to create a word.
-      string input = Console.ReadLine ().ToUpper ();
-      if (!input.All (char.IsLetter) || input == "" || input.Length > 7 || input.Length < 7) {
+      Console.Write ("Enter the seven letters: ");
+      string sevenLetters = Console.ReadLine ().ToUpper ();// Note: The first letter in the string must be used to create a word.
+      if (!sevenLetters.All (char.IsLetter) || sevenLetters == "" || sevenLetters.Length > 7 || sevenLetters.Length < 7) {
          Console.WriteLine ("Invaild input");
          return;
       }
-      char[] sevenLetters = input.ToArray ();
       Dictionary<string, int> spellBee = new ();
       foreach (var word in words) {
          if (word.Length >= 4 && word.Contains (sevenLetters[0])) {
