@@ -15,7 +15,7 @@ internal class Program {
       string[] words = File.ReadAllLines ("C:/etc/words.txt"); // File location should be as per your system and focus on forward slash, otherwise an error might be shown.
       Console.Write ("Enter the seven letters: ");// Note: The first letter in the string must be used to create a word.
       string sevenLetters = Console.ReadLine ().ToUpper ();//ToUpper () method is used because the document has capital letters.
-      if (!sevenLetters.All (char.IsLetter) || sevenLetters.Length > 7 || sevenLetters.Length != 7) {
+      if (!sevenLetters.All (char.IsLetter) || sevenLetters.Length != 7) {
          Console.WriteLine ("Invalid input");
          return;
       }
