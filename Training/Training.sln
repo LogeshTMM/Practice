@@ -3,7 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.4.33213.308
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Training", "Training.csproj", "{A4E63DA4-54DF-47E8-A1ED-9A32E8D07598}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Training", "Training.csproj", "{A4E63DA4-54DF-47E8-A1ED-9A32E8D07598}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TQueueClassLibrary", "..\TQueueClassLibrary\TQueueClassLibrary.csproj", "{3C21A7BA-2EBF-41AE-908F-B0032AB57CB6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TQueueTestProject", "..\TqueueTestProject\TQueueTestProject.csproj", "{50F18374-5829-4F80-A232-1D38EDD218E4}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +19,14 @@ Global
 		{A4E63DA4-54DF-47E8-A1ED-9A32E8D07598}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A4E63DA4-54DF-47E8-A1ED-9A32E8D07598}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A4E63DA4-54DF-47E8-A1ED-9A32E8D07598}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3C21A7BA-2EBF-41AE-908F-B0032AB57CB6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3C21A7BA-2EBF-41AE-908F-B0032AB57CB6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3C21A7BA-2EBF-41AE-908F-B0032AB57CB6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3C21A7BA-2EBF-41AE-908F-B0032AB57CB6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{50F18374-5829-4F80-A232-1D38EDD218E4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{50F18374-5829-4F80-A232-1D38EDD218E4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{50F18374-5829-4F80-A232-1D38EDD218E4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{50F18374-5829-4F80-A232-1D38EDD218E4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
