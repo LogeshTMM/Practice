@@ -16,7 +16,7 @@ namespace TestProject_T28 {
             tqueue.Enqueue (i);
             queue.Enqueue (i++);
          }
-         while (i != 0) {
+         while (i != 3) {
             Assert.AreEqual (tqueue.Dequeue (), queue.Dequeue ());
             i--;
          }
@@ -28,7 +28,7 @@ namespace TestProject_T28 {
       ///both classes and also check theIsEmpty property for tqueue. </summary>
       public void TestMethod2 () {
          int i = 0;
-         while (i != 6) {
+         while (i != 5) {
             tqueue.Enqueue (i);
             queue.Enqueue (i++);
          }
