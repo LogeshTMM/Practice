@@ -1,66 +1,38 @@
 ﻿namespace TStack;
 public class TStack<T> {
 
-   public TStack () => mArray = Array.Empty<T> ();
-
-   public TStack (int capacity) {
-      if (capacity < 0) throw new Exception ("Cannot create a TStack with a negative size");
-      else mArray = Array.Empty<T> ();
-   }
-
-   public int Capacity {
-      get {
-         if (mArray.Length > mCapacity) {
-            int quotient = mArray.Length / 4, counter = 0;// Based on the quotient value capacity of TStack will be determined.
-            while (counter != quotient) {
-               mCapacity *= 2;
-               counter++;
-            }
-            return mCapacity;
-         }
-         return mCapacity;
-      }
-   }
+   public TStack () => mArray = new T[4];
 
    public void Push (T element) {
-      if (mSize == 0) {
-         T[] temparr = mArray;
-         int mArrayNewLen = mArray.Length + 1, mArrayOldLen = temparr.Length - 1;
-         mArray = new T[mArrayNewLen];
-         while (mArrayOldLen != -1)
-            mArray[--mArrayNewLen] = temparr[mArrayOldLen--];
-         mSize = mArrayNewLen;
+      if (initialize < 4) {
+         if (mArray.Length == 0) Array.Resize (ref mArray, 4);
+         mArray[initialize++] = element;
+         mSize++;
+      } else {
+         Array.Resize (ref mArray, mArray.Length + 1);
+         mArray[initialize++] = element;
+         mSize++;
       }
-      mArray[--mSize] = element;
-   }
-
-   public T Peek () {
-      if (mArray.Length == 0) throw new Exception ("InvalidOperationException");
-      else return mArray[0];
    }
 
    public T Pop () {
-      T[] tempArr = mArray;
-      if (mArray.Length == 0) throw new Exception ("InvalidOperationException");
-      mArray = new T[tempArr.Length - 1];
-      int mArrayNewLen = tempArr.Length - 1, mArrayOldlen = tempArr.Length - 1;
-      while (mArrayOldlen != 0)
-         mArray[--mArrayNewLen] = tempArr[mArrayOldlen--];
-      return tempArr[0];
+      if (mSize == 0) throw new Exception ("InvalidOperationException");
+      popElement = mArray[mArray.Length - 1];
+      Array.Resize (ref mArray, mArray.Length - 1);
+      initialize = --mSize;
+      return popElement;
    }
 
-   public int Count {
-      get => mSize = mArray.Length;
+   public T Peek () {
+      if (mSize == 0) throw new Exception ("InvalidOperationException");
+      else return mArray[mArray.Length - 1];
    }
 
-   public bool IsEmpty {
-      get {
-         if (mArray.Length == 0) return true;
-         return false;
-      }
-   }
+   public int Count => mSize;
+
+   public bool IsEmpty => mSize == 0;
 
    T[] mArray;
-   int mSize;
-   int mCapacity = 4;
+   T popElement;
+   int mSize, initialize;
 }
