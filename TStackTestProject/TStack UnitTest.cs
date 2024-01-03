@@ -52,7 +52,7 @@ namespace TestProject_T27 {
          }
          Assert.IsTrue (tstack.IsEmpty);
          Assert.AreEqual (tstack.Count, stacks.Count);
-      
+
       }
 
       [TestMethod]
