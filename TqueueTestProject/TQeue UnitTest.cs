@@ -28,7 +28,7 @@ namespace TestProject_T28 {
       ///both classes and also check theIsEmpty property for tqueue. </summary>
       public void TestMethod2 () {
          int i = 0;
-         while (i != 5) {
+         while (i != 12) {
             tqueue.Enqueue (i);
             queue.Enqueue (i++);
          }
