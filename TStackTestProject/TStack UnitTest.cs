@@ -28,7 +28,7 @@ namespace TestProject_T27 {
       ///classes also check the tstack is empty or not. </summary>
       public void TestMethod2 () {
          int i = 0;
-         while (i != 6) {
+         while (i != 12) {
             tstack.Push (i);
             stacks.Push (i++);
          }

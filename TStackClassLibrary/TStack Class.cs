@@ -1,31 +1,24 @@
 ﻿namespace TStack;
 public class TStack<T> {
 
-   public TStack () => mArray = new T[4];
+   public TStack () => mArray = new T[mCapacity];
 
    public void Push (T element) {
-      if (initialize < 4) {
-         if (mArray.Length == 0) Array.Resize (ref mArray, 4);
-         mArray[initialize++] = element;
-         mSize++;
-      } else {
-         Array.Resize (ref mArray, mArray.Length + 1);
-         mArray[initialize++] = element;
-         mSize++;
+      if (mSize < mArray.Length) mArray[mSize++] = element;
+      else {
+         Array.Resize (ref mArray, mCapacity *= 2);
+         mArray[mSize++] = element;
       }
    }
 
    public T Pop () {
       if (mSize == 0) throw new Exception ("InvalidOperationException");
-      popElement = mArray[mArray.Length - 1];
-      Array.Resize (ref mArray, mArray.Length - 1);
-      initialize = --mSize;
-      return popElement;
+      return mArray[--mSize];
    }
 
    public T Peek () {
       if (mSize == 0) throw new Exception ("InvalidOperationException");
-      else return mArray[mArray.Length - 1];
+      else return mArray[mSize - 1];
    }
 
    public int Count => mSize;
@@ -33,6 +26,7 @@ public class TStack<T> {
    public bool IsEmpty => mSize == 0;
 
    T[] mArray;
-   T popElement;
-   int mSize, initialize;
+   int mSize, mCapacity = 4;
+   // mSize => Tells the numbers of active elements in the mArray.
+   // mcapacity => It is used to resize an array whenever it becomes full.
 }
