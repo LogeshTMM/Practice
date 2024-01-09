@@ -4,11 +4,8 @@ public class TStack<T> {
    public TStack () => mArray = new T[mCapacity];
 
    public void Push (T element) {
-      if (mSize < mArray.Length) mArray[mSize++] = element;
-      else {
-         Array.Resize (ref mArray, mCapacity *= 2);
-         mArray[mSize++] = element;
-      }
+      if (mSize == mArray.Length) Array.Resize (ref mArray, mCapacity *= 2);
+      mArray[mSize++] = element;
    }
 
    public T Pop () {
