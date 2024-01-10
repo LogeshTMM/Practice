@@ -1,72 +1,76 @@
 ﻿namespace MyList;
 public class MyList<T> {
-
-   public MyList () => mArray = Array.Empty<T> ();
-
-   public MyList (int capacity) {
+   public MyList () => mArray = new T[mCapacity];
+   public MyList (int capacity = 4) {
       if (capacity < 0) throw new Exception ("cannot create a MyList with a negative value");
-      else mArray = Array.Empty<T> ();
+      else mArray = new T[capacity];
    }
 
    public T this[int index] {
       get {
-         if (index < 0 || index > mArray.Length - 1) throw new Exception ("IndexOutOfRangeException");
+         if (index < 0 || index > mArray.Length) throw new Exception ("IndexOutOfRangeException");
          //If the index value is not within range between 0 and (mArray.Length - 1) thrown an exception.
          else return mArray[index];
       }
    }
 
-   public int Count {
-      get => mArray.Length;
-   }
+   public int Count => mSize;
 
    public int Capacity {
       get {
          if (mArray.Length > mCapacity) {
             int quotient = mArray.Length / 4, counter = 0;// Based on the quotient value capacity of MyList will be determined.
-            while (counter != quotient) {
-               mCapacity *= 2;
-               counter++;
-            }
+            while (counter++ != quotient) mCapacity *= 2;
             return mCapacity;
          }
          return mCapacity;
       }
    }
 
-   public void Add (T element) => mArray = mArray.Append (element).ToArray ();
-
-   public void Remove (T element) {
-      T[] tempArr = Array.Empty<T> ();
-      if (mArray.Length != 0) {
-         for (int i = 0; i < mArray.Length; i++)
-            if (!mArray[i].Equals (element))
-               tempArr = tempArr.Append (mArray[i]).ToArray ();
-         mArray = tempArr;
-      } else throw new Exception ("MyList is empty");
+   public void Add (T element) {
+      if (mSize == mArray.Length || mArray.Length == 0) Array.Resize (ref mArray, mCapacity *= 2);
+      mArray[mSize++] = element;
    }
 
-   public void Clear () => mArray = Array.Empty<T> ();
+   public bool Remove (T element) {
+      if (mSize != 0) {
+         for (int index = 0; index < mArray.Length; index++) {
+            if (mArray[index].Equals (element)) {
+               for (int j = index; j < mSize; j++) (mArray[j], mArray[j + 1]) = (mArray[j + 1], mArray[j]);
+               // Swap out the element that needs to be taken out for the mSize index position.
+               mSize--;
+               return true;
+            }
+         }
+      }
+      return false;
+   }
+
+   public void Clear () {
+      mSize = 0;
+      Array.Clear (mArray);
+   }
 
    public void Insert (int index, T element) {
-      T[] tempArr = Array.Empty<T> ();
-      if (index < 0 || index >= mArray.Length) throw new Exception ("IndexOutOfrangeException");
-      for (int i = 0, j = index; i < mArray.Length + 1; i++) {
-         if (index > i) tempArr = tempArr.Append (mArray[i]).ToArray ();
-         if (i == index) tempArr = tempArr.Append (element).ToArray ();
-         if (i > index && i <= mArray.Length + 1) tempArr = tempArr.Append (mArray[j++]).ToArray ();
-      }
-      mArray = tempArr;
+      if (index < 0 || index > mArray.Length || mSize == 0) throw new Exception ("ArgumentOutOfRangeException");
+      for (int i = mSize; i > index; i--) mArray[i] = mArray[i - 1];
+      // Move the index value up by one position to a step forward, it's starts from where the new element is going to insert.
+      // The Process goes on until the index value of mSize - 1.
+      mArray[index] = element; mSize++;
    }
 
    public void RemoveAt (int index) {
-      if (index < 0 || index >= mArray.Length) throw new Exception ("ArugumentOutOfRangeException");
-      T[] tempArr = Array.Empty<T> ();
-      for (int i = 0; i < mArray.Length; i++)
-         if (i != index) tempArr = tempArr.Append (mArray[i]).ToArray ();
-      mArray = tempArr;
+      if (index < 0 || index > mArray.Length || mSize == 0) throw new Exception ("ArugumentOutOfRangeException");
+      else if (index < mSize || mSize < mArray.Length) {
+         for (int i = index; i < mSize - 1; i++)
+            (mArray[i], mArray[i + 1]) = (mArray[i + 1], mArray[i]);
+         // Swap out the element that needs to be taken out for the mSize index position.
+         mSize--;
+      }
    }
 
    T[] mArray;
-   int mCapacity = 4;
+   int mSize, mCapacity = 4;
+   // mSize => Tells the numbers of active elements in the mArray.
+   // mcapacity => It is used to resize an array whenever it becomes full.
 }

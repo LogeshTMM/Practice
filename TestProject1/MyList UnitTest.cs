@@ -2,7 +2,6 @@ using MyList;
 namespace TestProject_T26 {
    [TestClass]
    public class MyListUnitTest {
-
       static readonly MyList<int> mylist = new (); // User Defined Class
       static readonly List<int> lists = new (); // Predefined Class
 
@@ -49,7 +48,7 @@ namespace TestProject_T26 {
             mylist.RemoveAt (i);
             i += 2;
          }
-         for (int j = 0; j < mylist.Count; j++)
+         for (int j = 0; j < lists.Count; j++)
             Assert.IsTrue (lists[j] == mylist[j]);
       }
 
@@ -62,9 +61,19 @@ namespace TestProject_T26 {
       ///<summary>In this method we delete all the elements to the MyList<T> (user - defined class) as well as 
       ///List<T> (predefined class). Lastly, evaluate the number of elements in both classes should be zero. </summary>
       public void TestMethod5 () {
+         Assert.IsTrue (mylist.Capacity > 4);
          mylist.Clear ();
          lists.Clear ();
          Assert.IsTrue (mylist.Count == lists.Count);
       }
+
+      [TestMethod]
+      public void TestMethod6 () => Assert.ThrowsException<Exception> (() => mylist.Insert (7, 5));
+
+      [TestMethod]
+      public void TestMethod7 () => Assert.ThrowsException<Exception> (() => mylist.RemoveAt (7));
+
+      [TestMethod]
+      public void TestMethod8 () => Assert.IsFalse (mylist.Remove (7));
    }
 }
