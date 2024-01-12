@@ -8,7 +8,7 @@ namespace TestProject_T26 {
       // In the following four methods, mylist and lists are not initialized, except for the first method.
 
       [TestMethod]
-      ///<summary>In this method we add the elements to the MyList<T> (user - defined class) methods like Add,Remove and Insert
+      ///<summary> In this method we add the elements to the MyList<T> (user - defined class) methods like Add,Remove and Insert
       ///as well as List<T> (predefined class). Lastly, evaluate the elements in both classes. </summary>
       public void TestMethod1 () {
          int i = 0;
@@ -18,6 +18,7 @@ namespace TestProject_T26 {
          }
          mylist.Remove (--i);
          lists.Remove (i);
+         Assert.IsFalse (mylist.Remove (7));
          mylist.Insert (3, 8);
          lists.Insert (3, 8);
          for (int j = 0; j < lists.Count; j++)
@@ -25,7 +26,7 @@ namespace TestProject_T26 {
       }
 
       [TestMethod]
-      ///<summary>In this method we insert the elements to the MyList<T> (user - defined class) in Insert method
+      ///<summary> In this method we insert the elements to the MyList<T> (user - defined class) in Insert method
       ///as well as List<T> (predefined class) Insert method. Lastly, evaluate the elements in both classes. </summary>
       public void TestMethod2 () {
          int i = 2, j = 10;
@@ -39,7 +40,7 @@ namespace TestProject_T26 {
       }
 
       [TestMethod]
-      ///<summary>In this method we remove the elements to the MyList<T> (user - defined class) in RemoveAt method
+      ///<summary> In this method we remove the elements to the MyList<T> (user - defined class) in RemoveAt method
       ///as well as List<T> (predefined class) Insert method. Lastly, evaluate the elements in both classes. </summary>
       public void TestMethod3 () {
          int i = 0;
@@ -53,12 +54,12 @@ namespace TestProject_T26 {
       }
 
       [TestMethod]
-      ///<summary>In this method we count the elements in the MyList<T> (user - defined class) as well as 
+      ///<summary> In this method we count the elements in the MyList<T> (user - defined class) as well as 
       ///List<T> (predefined class). Lastly, evaluate the number of elements in both classes. </summary>
       public void TestMethod4 () => Assert.IsTrue (mylist.Count == lists.Count);
 
       [TestMethod]
-      ///<summary>In this method we delete all the elements to the MyList<T> (user - defined class) as well as 
+      ///<summary> In this method we delete all the elements to the MyList<T> (user - defined class) as well as 
       ///List<T> (predefined class). Lastly, evaluate the number of elements in both classes should be zero. </summary>
       public void TestMethod5 () {
          Assert.IsTrue (mylist.Capacity > 4);
@@ -68,12 +69,11 @@ namespace TestProject_T26 {
       }
 
       [TestMethod]
-      public void TestMethod6 () => Assert.ThrowsException<Exception> (() => mylist.Insert (7, 5));
-
-      [TestMethod]
-      public void TestMethod7 () => Assert.ThrowsException<Exception> (() => mylist.RemoveAt (7));
-
-      [TestMethod]
-      public void TestMethod8 () => Assert.IsFalse (mylist.Remove (7));
+      ///<summary> All the necessary exceptions for the class are checked in this method. </summary>
+      public void TestMethod6 () {
+         Assert.ThrowsException<ArgumentOutOfRangeException> (() => mylist.RemoveAt (14));
+         Assert.ThrowsException<ArgumentOutOfRangeException> (() => mylist.Insert (14, 2));
+         Assert.ThrowsException<IndexOutOfRangeException> (() => mylist[25]);
+      }
    }
 }

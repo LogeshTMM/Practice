@@ -8,24 +8,19 @@ public class MyList<T> {
 
    public T this[int index] {
       get {
-         if (index < 0 || index > mArray.Length) throw new Exception ("IndexOutOfRangeException");
+         if (index < 0 || index > mArray.Length) throw new IndexOutOfRangeException ();
          //If the index value is not within range between 0 and (mArray.Length - 1) thrown an exception.
          else return mArray[index];
+      }
+      set {
+         if (index < 0 || index > mArray.Length) throw new IndexOutOfRangeException ();
+         else mArray[index] = value;
       }
    }
 
    public int Count => mSize;
 
-   public int Capacity {
-      get {
-         if (mArray.Length > mCapacity) {
-            int quotient = mArray.Length / 4, counter = 0;// Based on the quotient value capacity of MyList will be determined.
-            while (counter++ != quotient) mCapacity *= 2;
-            return mCapacity;
-         }
-         return mCapacity;
-      }
-   }
+   public int Capacity => mArray.Length;
 
    public void Add (T element) {
       if (mSize == mArray.Length || mArray.Length == 0) Array.Resize (ref mArray, mCapacity *= 2);
@@ -52,7 +47,9 @@ public class MyList<T> {
    }
 
    public void Insert (int index, T element) {
-      if (index < 0 || index > mArray.Length || mSize == 0) throw new Exception ("ArgumentOutOfRangeException");
+      if (index < 0 || index > mArray.Length || mSize == 0)
+         throw new ArgumentOutOfRangeException ("Invalid Index");
+      if (mSize == mArray.Length) Array.Resize (ref mArray, mCapacity *= 2);
       for (int i = mSize; i > index; i--) mArray[i] = mArray[i - 1];
       // Move the index value up by one position to a step forward, it's starts from where the new element is going to insert.
       // The Process goes on until the index value of mSize - 1.
@@ -60,8 +57,9 @@ public class MyList<T> {
    }
 
    public void RemoveAt (int index) {
-      if (index < 0 || index > mArray.Length || mSize == 0) throw new Exception ("ArugumentOutOfRangeException");
-      else if (index < mSize || mSize < mArray.Length) {
+      if (index < 0 || index > mArray.Length || mSize == 0)
+         throw new ArgumentOutOfRangeException ("Invalid Index");
+      else {
          for (int i = index; i < mSize - 1; i++)
             (mArray[i], mArray[i + 1]) = (mArray[i + 1], mArray[i]);
          // Swap out the element that needs to be taken out for the mSize index position.
