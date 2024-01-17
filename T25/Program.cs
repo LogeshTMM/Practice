@@ -11,7 +11,7 @@ internal class Program {
       string input;
       while (true) {
          Console.Write ("Enter the word to be sorting: ");
-         input = Console.ReadLine ();
+         input = Console.ReadLine ().ToLower ();
          if (input.All (char.IsLetter) && input.Length > 3) break;
          Console.WriteLine ("Reason: It should not be a text, or the length of the word should be less than 3.\n");
       }
@@ -19,16 +19,15 @@ internal class Program {
       string specialChar;
       while (true) {
          Console.Write ("Enter the single alphabet character: ");
-         specialChar = Console.ReadLine ();
+         specialChar = Console.ReadLine ().ToLower ();
          if (specialChar.All (char.IsLetter) && specialChar != "" && specialChar.Length == 1) break;
          Console.WriteLine ("Reason: It should not be a letter or the length of the character should not be equal to 1.\n");
       }
       Console.Write ("Type 'd' to descending order (or) press enter to default mode (ascending order)" + " ---> ");
       string order = Console.ReadLine ().ToLower ();
       if (order == "d")
-         Console.WriteLine (string.Join (",", SortChars (charList, Convert.ToChar (specialChar),
-            charList.Count, Convert.ToChar (order))));
-      else Console.WriteLine (string.Join (",", SortChars (charList, Convert.ToChar (specialChar), charList.Count)));
+         Console.WriteLine (string.Join (",", SortChars (charList, Convert.ToChar (specialChar), Convert.ToChar (order))));
+      else Console.WriteLine (string.Join (",", SortChars (charList, Convert.ToChar (specialChar))));
    }
 
    #region SortChars Method ---------------------------------------------------------------------
@@ -40,10 +39,10 @@ internal class Program {
    /// (Default): Organize the list in ascending order and swap the special characters at the end.
    /// d: Organize the list in descending order and swap the special characters at the end.
    /// </returns>
-   static List<char> SortChars (List<char> lists, char specialChar, int len, char sort = 'a') {
-      lists.RemoveAll (a => a.Equals (specialChar));
-      List<char> sortedList = sort == 'd' ? lists.OrderByDescending (x => x).ToList () : lists.Order ().ToList ();
-      sortedList.AddRange (Enumerable.Repeat (specialChar, len - sortedList.Count));
+   static List<char> SortChars (List<char> lists, char specialChar, char sort = 'a') {
+      List<char> sortedList = sort == 'd' ? lists.Where (a => a != specialChar).OrderByDescending (b => b)
+         .ToList () : lists.Where (a => a != specialChar).Order ().ToList ();
+      sortedList.AddRange (Enumerable.Repeat (specialChar, lists.Count - sortedList.Count));
       return sortedList;
    }
    #endregion
