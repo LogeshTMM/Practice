@@ -1,18 +1,17 @@
 ﻿namespace complexNumber;
 public class ComplexNumber {
-   public string Addition (double aReal, double aImg, double bReal, double bImg) {
-      double realAdd = aReal + bReal, imgAdd = aImg + bImg;
-      return $"{realAdd} + {imgAdd}i";
-   }
+   // First complex number syntax based on method parameters: aReal + aImg
+   // Second complex number syntax based on method parameters: bReal + bImg
 
-   public string Subraction (double aReal, double aImg, double bReal, double bImg) {
-      double realSub = aReal - bReal, imgSub = aImg - bImg;
-      return $"{realSub} - ({imgSub}i)";
-   }
+   // The user provides four parameter values for the addition operation between two complex numbers.
+   public string Addition (double aReal, double aImg, double bReal, double bImg)
+      => $"{aReal + bReal} + {aImg + bImg}i";
 
-   public double Magnitude (double aReal, double aimg) {
-      double result = Math.Pow (aReal, 2) + Math.Pow (aimg, 2);
-      return Math.Sqrt (result);
-   }
+   // The user provides four parameter values for the subtraction operation between two complex numbers.
+   public string Subraction (double aReal, double aImg, double bReal, double bImg)
+      => $"{aReal - bReal} - ({aImg - bImg}i)";
 
+   // It performs a magnitude operation on a single complex number.
+   public double Magnitude (double aReal, double aimg)
+      => Math.Sqrt (Math.Pow (aReal, 2) + Math.Pow (aimg, 2));
 }
